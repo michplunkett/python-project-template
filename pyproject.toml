@@ -1,13 +1,22 @@
+{%- set license_classifiers = {
+    'MIT': 'License :: OSI Approved :: MIT License',
+    'BSD-3-Clause': 'License :: OSI Approved :: BSD License',
+    'ISC': 'License :: OSI Approved :: ISC License (ISCL)',
+    'Apache-2.0': 'License :: OSI Approved :: Apache Software License',
+    'GPL-3.0-only': 'License :: OSI Approved :: GNU General Public License v3 (GPLv3)'
+} -%}
+
+[tool]
 [tool.poetry]
-name = "poetry-python-project"
-version = "0.1.0"
-description = "This repository is a template for a python project using the poetry container. The intent is to do all the basic lifting for a python project so that people can hit the ground running with their ideas."
-authors = ["michplunkett"]
+name = "{{ cookiecutter.project_slug }}"
+version = "{{ cookiecutter.version }}"
+description = "{{ cookiecutter.short_description }}"
+authors = ["{{ cookiecutter.full_name }} <{{ cookiecutter.email }}>"]
 readme = "README.md"
-packages = [{include = "poetry_python_project"}]
+packages = [{include = "{{ cookiecutter.project_slug }}"}]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^{{ cookiecutter.python_version }}"
 pylint = "^2.17.0"
 black = "^23.1.0"
 requests = "^2.28.2"

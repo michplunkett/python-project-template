@@ -1,5 +1,5 @@
 """
-This file serves as the entry point for the project module.
+This file serves as the entry point for the {{ cookiecutter.project_slug }} module.
 """
 
 # pylint: disable=invalid-name
