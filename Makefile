@@ -1,9 +1,15 @@
 # Here is some general information on Makefile's so that you can grow this out:
 # https://www.gnu.org/software/make/manual/html_node/Introduction.html
 
+BASEDIR=project
+
 .PHONY: format
 format:
-	black project/ test/ --line-length=80
+	black ${BASEDIR}/ test/
+
+.PHONY: lint
+lint:
+	pylint ${BASEDIR}/ test/
 
 .PHONY: test
 test:
