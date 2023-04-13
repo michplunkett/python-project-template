@@ -5,7 +5,7 @@ BASEDIR=project
 
 .PHONY: format
 format:
-	black ${BASEDIR}/ test/
+	black ${BASEDIR}/ test/ --line-length=80
 
 .PHONY: lint
 lint:
