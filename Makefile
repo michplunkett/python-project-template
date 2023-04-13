@@ -6,6 +6,7 @@ BASEDIR=project
 .PHONY: format
 format:
 	black ${BASEDIR}/ test/ --line-length=80
+	isort --profile black ${BASEDIR}/ test/
 
 .PHONY: lint
 lint:
