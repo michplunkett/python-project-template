@@ -6,9 +6,12 @@
 
 ## Checklist before requesting a review
 <!--- These are suggested things you could add, but what you add will be dependent on your repository's standards. --->
-- [ ] This is an example of a checklist item
 - [ ] The code runs successfully.
 
 ```python
 print("Oh, it def does run successfully.")
 ```
+
+- [ ] I ran `make lint` and have made the bulk of changes that it has requested.
+- [ ] The `Lint` GitHub Action step is passing.
+  - Manually run `make format` to correct the errors.
