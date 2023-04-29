@@ -2,7 +2,9 @@
 <!-- For more information on Pull Requests, you can reference here: https://success.vanillaforums.com/kb/articles/228-using-pull-requests-to-contribute -->
 ## Describe your changes
 
+
 ## Non-obvious technical information
+
 
 ## Checklist before requesting a review
 <!--- These are suggested things you could add, but what you add will be dependent on your repository's standards. --->
