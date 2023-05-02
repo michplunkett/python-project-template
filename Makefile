@@ -10,7 +10,7 @@ format:
 
 .PHONY: lint
 lint:
-	pylint ${BASEDIR}/ test/
+	ruff ${BASEDIR}/ test/
 
 .PHONY: test
 test:
