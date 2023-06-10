@@ -9,10 +9,10 @@ readme = "README.md"
 python = "^3.11"
 black = "^23.3.0"
 requests = "^2.28.2"
-pytest = "^7.2.2"
+pytest = "^7.3.1"
 responses = "^0.23.1"
 isort = "^5.12.0"
-ruff = "^0.0.267"
+ruff = "^0.0.272"
 
 [tool.black]
 line-length = 80

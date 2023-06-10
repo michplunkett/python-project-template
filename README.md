@@ -10,7 +10,7 @@ This repository is a template for a python 🐍 project using the poetry contain
 
 ### 🐍 by Default (Feel free to delete this after creating your project)
 - [Black](https://github.com/psf/black): This serves as the codebase formatter.
-- [Pylint](https://www.pylint.org/): This serves as the codebase linter.
+- [Ruff](https://github.com/astral-sh/ruff): This serves as the codebase linter.
 - [Pytest](https://docs.pytest.org/en/7.2.x/): This serves as the codebase test runner.
 - [Requests](https://requests.readthedocs.io/en/latest/): This is the project's means of communicating with external APIs.
 - [Responses](https://github.com/getsentry/responses): This is used in conjunction with Pytest and Requests to mock API calls in the test module.
