@@ -10,7 +10,6 @@
 <!--- These are suggested things you could add, but what you add will be dependent on your repository's standards. --->
 - [ ] The code runs successfully.
 
-```python
-print("Oh, it def does run successfully.")
+```console
+HERE IS SOME COMMAND LINE OUTPUT
 ```
-- [ ] I ran `make lint` and have made the bulk of changes that it has requested.
