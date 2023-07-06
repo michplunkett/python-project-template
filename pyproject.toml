@@ -26,6 +26,10 @@ skip = [".gitignore", "project/data/"]
 fix=true
 line-length = 80
 target-version = "py311"
+select = ["D"]
+
+[tool.ruff.pydocstyle]
+convention = "google"
 
 [build-system]
 requires = ["poetry-core"]
