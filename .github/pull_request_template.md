@@ -13,4 +13,3 @@
 ```bash
 HERE IS SOME COMMAND LINE OUTPUT
 ```
-- [ ] I ran `make lint` and have made the bulk of changes that it has requested.
