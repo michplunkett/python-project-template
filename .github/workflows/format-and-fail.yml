@@ -23,3 +23,8 @@ jobs:
         with:
           configuration: --check-only --diff
           requirementsFiles: pyproject.toml
+  Ruff:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: chartboost/ruff-action@v1
