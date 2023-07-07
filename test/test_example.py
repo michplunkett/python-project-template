@@ -1,4 +1,4 @@
-"""This file serves as an example of a basic test."""
+"""Serves as an example of a basic test."""
 
 
 def test_example():
