@@ -14,6 +14,7 @@ This repository is a template for a python 🐍 project using the poetry contain
 - [Pytest](https://docs.pytest.org/en/7.2.x/): This serves as the codebase test runner.
 - [Requests](https://requests.readthedocs.io/en/latest/): This is the project's means of communicating with external APIs.
 - [Responses](https://github.com/getsentry/responses): This is used in conjunction with Pytest and Requests to mock API calls in the test module.
+- [Numpy Pydoc Styling](https://numpy.org/doc/1.20/docs/howto_document.html): Ruff works to require strict Numpy-style pydoc strings.
 
 ### Project Requirements
 - Python version: `^3.11`
