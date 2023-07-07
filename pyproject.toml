@@ -29,7 +29,7 @@ target-version = "py311"
 select = ["D"]
 
 [tool.ruff.pydocstyle]
-convention = "google"
+convention = "numpy"
 
 [tool.ruff.extend-per-file-ignores]
 "__init__.py" = ["D104"]
