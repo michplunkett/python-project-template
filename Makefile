@@ -3,13 +3,10 @@
 
 BASEDIR=project
 
-.PHONY: format
-format:
-	black ${BASEDIR}/ test/
-	isort ${BASEDIR}/ test/
-
 .PHONY: lint
 lint:
+	black ${BASEDIR}/ test/
+	isort ${BASEDIR}/ test/
 	ruff ${BASEDIR}/ test/
 
 .PHONY: test
