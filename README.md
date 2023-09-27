@@ -9,12 +9,9 @@ This repository is a template for a python 🐍 project using the poetry contain
 5. Update the information in the `CODEOWNERS` file so that it uses your GitHub ID and the kebab-case name of your project folder.
 
 ### 🐍 by Default (Feel free to delete this after creating your project)
-- [Black](https://github.com/psf/black): This serves as the codebase formatter.
-- [Ruff](https://github.com/astral-sh/ruff): This serves as the codebase linter.
-- [Pytest](https://docs.pytest.org/en/7.2.x/): This serves as the codebase test runner.
+- [pre-commit]([https://github.com/psf/black](https://pre-commit.com/)): This serves as the codebase formatter and linter.
 - [Requests](https://requests.readthedocs.io/en/latest/): This is the project's means of communicating with external APIs.
 - [Responses](https://github.com/getsentry/responses): This is used in conjunction with Pytest and Requests to mock API calls in the test module.
-- [Numpy Pydoc Styling](https://numpy.org/doc/1.20/docs/howto_document.html): Ruff works to require strict Numpy-style pydoc strings.
 
 ### Project Requirements
 - Python version: `^3.11`
@@ -29,6 +26,6 @@ This repository is a template for a python 🐍 project using the poetry contain
   - Example: `poetry add black`
 
 ## Standard Commands
-- `make lint`: Runs `black`, `isort`, and `ruff` on the codebase
+- `make lint`: Runs `pre-commit`
 - `make test`: Runs test cases in the `test` directory
 - `make run`: Runs the `main` function in the `project` folder
