@@ -1,0 +1,73 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: trailing-whitespace
+      - id: name-tests-test
+      - id: check-docstring-first
+      - id: check-executables-have-shebangs
+      - id: check-json
+      - id: check-case-conflict
+      - id: check-toml
+      - id: check-merge-conflict
+      - id: check-xml
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: check-symlinks
+      - id: mixed-line-ending
+      - id: sort-simple-yaml
+      - id: fix-encoding-pragma
+        args:
+          - --remove
+      - id: pretty-format-json
+        args:
+          - --autofix
+
+  - repo: https://github.com/pre-commit/pygrep-hooks
+    rev: v1.10.0
+    hooks:
+      - id: python-check-blanket-noqa
+      - id: python-check-mock-methods
+      - id: python-no-eval
+      - id: python-no-log-warn
+
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+        name: Run isort to sort imports
+        files: \.py$
+        # To keep consistent with the global isort skip config defined in setup.cfg
+        exclude: ^build/.*$|^.tox/.*$|^venv/.*$
+        args:
+          - --lines-after-imports=2
+          - --profile=black
+          - --line-length=80
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.0.286
+    hooks:
+      - id: ruff
+        types_or: [python, pyi, jupyter]
+        args:
+          - --fix
+          - --target-version=py311
+          - --select=B,C,E,F,W
+          - --line-length=80
+
+  - repo: https://github.com/PyCQA/flake8
+    rev: 6.0.0
+    hooks:
+      - id: flake8
+        args:
+          - --ignore=E203,E402,E501,E800,W503,W391,E261
+          - --select=B,C,E,F,W,T4,B9
+
+  - repo: https://github.com/psf/black
+    rev: 23.7.0
+    hooks:
+      - id: black
+        args:
+          - --safe
+          - --target-version=py311
+          - --line-length=80

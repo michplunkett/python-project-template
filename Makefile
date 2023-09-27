@@ -5,9 +5,7 @@ BASEDIR=project
 
 .PHONY: lint
 lint:
-	black ${BASEDIR}/ test/
-	isort ${BASEDIR}/ test/
-	ruff ${BASEDIR}/ test/
+	pre-commit run --all-files
 
 .PHONY: test
 test:

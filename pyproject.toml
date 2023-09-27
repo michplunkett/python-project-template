@@ -7,32 +7,10 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-black = "^23.3.0"
 requests = "^2.28.2"
 pytest = "^7.3.1"
 responses = "^0.23.1"
-isort = "^5.12.0"
-ruff = "^0.0.272"
-
-[tool.black]
-line-length = 80
-
-[tool.isort]
-profile= "black"
-line_length = 80
-skip = [".gitignore", "project/data/"]
-
-[tool.ruff]
-fix=true
-line-length = 80
-target-version = "py311"
-select = ["D"]
-
-[tool.ruff.pydocstyle]
-convention = "numpy"
-
-[tool.ruff.extend-per-file-ignores]
-"__init__.py" = ["D104"]
+pre-commit = "^3.4.0"
 
 [build-system]
 requires = ["poetry-core"]
