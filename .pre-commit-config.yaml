@@ -11,6 +11,8 @@ repos:
         exclude: data/
       - id: nbqa-isort
         exclude: data/
+        args:
+          - --profile=black
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
