@@ -27,5 +27,5 @@ lifting for a python project so that people can hit the ground running with thei
 
 ## Standard Commands
 - `make lint`: Runs `pre-commit`.
-- `make test`: Runs test cases in the `test` directory.
+- `make test`: Runs test cases in the `tests` directory.
 - `make run`: Runs the `main` function in the `project` folder.
