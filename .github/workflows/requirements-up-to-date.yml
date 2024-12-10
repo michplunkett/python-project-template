@@ -23,6 +23,8 @@ jobs:
           echo "Checking pyproject.toml and uv.lock for changes..."
           BASE_BRANCH=${{ github.event.pull_request.base.ref }}
           HEAD_BRANCH=${{ github.event.pull_request.head.ref }}
+          echo "Changed files: $BASE_BRANCH"
+          echo "Changed files: $HEAD_BRANCH"
           CHANGES=$(git diff --name-only origin/$BASE_BRANCH -- origin/$HEAD_BRANCH | grep -E "^pyproject.toml$"  && echo false | grep -E "^uv.lock$" && echo false || true)
           if [ "$CHANGES" == "true" ]; then
             echo "Changes were detected..."
