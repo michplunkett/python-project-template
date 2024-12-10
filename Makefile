@@ -8,7 +8,7 @@ env:
 
 .PHONY: lint
 lint:
-	pre-commit run --all-files
+	uv pre-commit run --all-files
 
 .PHONY: create-requirements
 create-requirements:
@@ -16,12 +16,12 @@ create-requirements:
 
 .PHONY: test
 test:
-	pytest -vs tests/
+	uv run pytest -vs tests/
 
 .PHONY: test-and-fail
 test-and-fail:
-	pytest -vsx tests/
+	uv run pytest -vsx tests/
 
 .PHONY: run
 run:
-	python -m project
+	uv run python -m project
