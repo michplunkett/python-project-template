@@ -11,7 +11,7 @@ lint:
 
 .PHONY: create-requirements
 create-requirements:
-	uv pip compile pyproject.toml > requirements.txt
+	uv pip compile --generate-hashes pyproject.toml > requirements.txt
 
 .PHONY: test
 test:
