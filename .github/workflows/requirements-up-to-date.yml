@@ -26,8 +26,10 @@ jobs:
           CHANGES=$(git diff --name-only origin/$BASE_BRANCH -- origin/$HEAD_BRANCH | grep -E "^(pyproject.toml|uv.lock)$" || true)
           echo "Changed files: $CHANGES"
           if [ ! -z "$CHANGES" ]; then
+            echo "Changes were detected..."
             echo "uv_updated=true" >> $GITHUB_ENV
           else
+          echo "Changes were NOT detected..."
             echo "uv_updated=false" >> $GITHUB_ENV
           fi
 
