@@ -36,6 +36,7 @@ jobs:
           fi
           
           CHANGES=$(git diff --name-only origin/$BASE_BRANCH -- origin/$HEAD_BRANCH)
+          echo "Changed files: $CHANGES"
           if echo "$CHANGES" | grep -q "^pyproject.toml$" && echo "$CHANGES" | grep -q "^uv.lock$"; then
             echo "Both pyproject.toml and uv.lock have changed."
           else
