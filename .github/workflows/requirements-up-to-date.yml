@@ -39,7 +39,7 @@ jobs:
           HEAD_BRANCH=${{ github.event.pull_request.head.ref }}
 
           CHANGED_FILES=$(git diff --name-only origin/$BASE_BRANCH -- origin/$HEAD_BRANCH)
-          echo "Changed files: $CHANGED_FILES"
+          echo $CHANGED_FILES
           
           # Check if requirements.txt has been updated
           if echo "$CHANGED_FILES" | grep -q "^requirements.txt$"; then
