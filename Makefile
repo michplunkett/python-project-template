@@ -3,6 +3,7 @@
 default: create-requirements lint
 
 .PHONY: env
+env:
 	uv venv
 
 .PHONY: lint
