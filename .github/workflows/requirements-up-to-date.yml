@@ -34,7 +34,7 @@ jobs:
           fi
 
       - name: Validate requirements.txt update
-        if: env.uv_updated == 'true'
+        if: env.uv_updated == 'false'
         run: |
           echo "Checking if requirements.txt has been updated..."
           BASE_BRANCH=${{ github.event.pull_request.base.ref }}
