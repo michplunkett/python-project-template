@@ -2,22 +2,26 @@
 # https://www.gnu.org/software/make/manual/html_node/Introduction.html
 default: create-requirements lint
 
+.PHONY: env
+env:
+	uv venv
+
 .PHONY: lint
 lint:
-	pre-commit run --all-files
+	uv run pre-commit run --all-files
 
 .PHONY: create-requirements
 create-requirements:
-	poetry export --format=requirements.txt > requirements.txt
+	uv pip compile --generate-hashes pyproject.toml > requirements.txt
 
 .PHONY: test
 test:
-	pytest -vs test/
+	uv run pytest -vs tests/
 
 .PHONY: test-and-fail
 test-and-fail:
-	pytest -vsx test/
+	uv run pytest -vsx tests/
 
 .PHONY: run
 run:
-	python -m project
+	uv run python -m project
