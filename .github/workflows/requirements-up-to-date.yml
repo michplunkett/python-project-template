@@ -30,65 +30,22 @@ jobs:
             echo "files_changed=false" >> $GITHUB_ENV
           fi
       
-      - name: Perform actions on changes
+      - name: Validate requirements.txt changes
         if: env.files_changed == 'true'
         run: |
-          echo "Performing actions because uv.lock or pyproject.toml has changed..."
-          # Add commands to handle changes, e.g., update requirements, run tests, etc.
+          echo "Validating requirements.txt update..."
 
-      - name: No changes detected step
-        if: env.files_changed == 'false'
-        run: |
-          echo "No actions required as no relevant files have changed."
+          BASE_BRANCH=${{ github.event.pull_request.base.ref }}
+          HEAD_BRANCH=${{ github.event.pull_request.head.ref }}
 
-#  validate-dependencies:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v4
-#        with:
-#          fetch-depth: 0
-#
-#      - name: Fetch all history
-#        run: git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
-#
-#      - name: Check for changes in pyproject.toml and uv.lock
-#        id: check-deps
-#        run: |
-#          echo "Checking pyproject.toml and uv.lock for changes..."
-#          BASE_BRANCH=${{ github.event.pull_request.base.ref }}
-#          HEAD_BRANCH=${{ github.event.pull_request.head.ref }}
-#          echo "Changed files: $BASE_BRANCH"
-#          echo "Changed files: $HEAD_BRANCH"
-#          CHANGES=$(git diff --name-only origin/$BASE_BRANCH -- origin/$HEAD_BRANCH | grep -E "^pyproject.toml$"  && echo false | grep -E "^uv.lock$" && echo false || true)
-#          if [ "$CHANGES" == "true" ]; then
-#            echo "Changes were detected..."
-#            echo "Changed files: $CHANGES"
-#            echo "uv_updated=true" >> $GITHUB_ENV
-#          else
-#            echo "Changes were NOT detected..."
-#            echo "uv_updated=false" >> $GITHUB_ENV
-#          fi
-#
-#          CHANGES=$(git diff --name-only origin/$BASE_BRANCH -- origin/$HEAD_BRANCH)
-#          echo "Changed files: $CHANGES"
-#          if echo "$CHANGES" | grep -q "^pyproject.toml$" && echo "$CHANGES" | grep -q "^uv.lock$"; then
-#            echo "Both pyproject.toml and uv.lock have changed."
-#          else
-#            echo "One or both files have not changed."
-#          fi
-#
-#      - name: Validate requirements.txt update
-#        if: env.uv_updated == 'false'
-#        run: |
-#          echo "Checking if requirements.txt has been updated..."
-#          BASE_BRANCH=${{ github.event.pull_request.base.ref }}
-#          HEAD_BRANCH=${{ github.event.pull_request.head.ref }}
-#          REQUIREMENTS_CHANGED=$(git diff --name-only origin/$BASE_BRANCH -- origin/$HEAD_BRANCH | grep -q "requirements.txt" && echo true || echo false)
-#          if [ "$REQUIREMENTS_CHANGED" == "true" ]; then
-#            echo "requirements.txt updated correctly."
-#          else
-#            echo "ERROR: pyproject.toml or uv.lock has changed, but requirements.txt has not been updated."
-#            echo "Please update requirements.txt by running 'make create-requirements'."
-#            exit 1
-#          fi
+          CHANGED_FILES=$(git diff --name-only origin/$BASE_BRANCH -- origin/$HEAD_BRANCH)
+          echo "Changed files: $CHANGED_FILES"
+          
+          # Check if requirements.txt has been updated
+          if echo "$CHANGED_FILES" | grep -q "^requirements.txt$"; then
+            echo "requirements.txt has been updated."
+          else
+            echo "ERROR: pyproject.toml or uv.lock has changed, but requirements.txt has not been updated."
+            echo "Please update requirements.txt by running 'make create-requirements'."
+            exit 1
+          fi
