@@ -28,6 +28,7 @@ jobs:
           else
             echo "No changes detected in uv.lock or pyproject.toml."
             echo "files_changed=false" >> $GITHUB_ENV
+          fi
       
       - name: Perform actions on changes
         if: env.files_changed == 'true'
