@@ -1,7 +1,7 @@
 [project]
 name = "python-project-template"
 version = "0.1.0"
-description = "This repository is a template for a python project using the poetry container. The intent is to do all the basic lifting for a python project so that people can hit the ground running with their ideas."
+description = "This repository is a template for a uv project using the poetry container. The intent is to do all the basic lifting for a python project so that people can hit the ground running with their ideas."
 authors = ["michplunkett"]
 readme = "README.md"
 requires-python = ">=3.12.0"
