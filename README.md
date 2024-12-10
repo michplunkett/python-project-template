@@ -1,5 +1,5 @@
 # Poetry Python 🐍 Project Template
-This repository is a template for a python 🐍 project using the poetry container. The intent is to do all the basic
+This repository is a template for a python 🐍 project using the `uv` container. The intent is to do all the basic
 lifting for a python project so that people can hit the ground running with their ideas.
 
 ### To make this project your own
@@ -15,10 +15,10 @@ lifting for a python project so that people can hit the ground running with thei
 
 ### Project Requirements
 - `uv` version: `0.5.7`
-- Download at: [link](https://docs.astral.sh/uv/.
+- Download at: [link](https://docs.astral.sh/uv/).
 
 ### Instructions to Run the Project
-1. Go into the base directory of the repository and type `poetry shell` into the terminal.
+1. Go into the base directory of the repository and type `make env` or `uv env` into the terminal.
 2. Use the `make run` command.
 
 ### Technical Notes
@@ -26,7 +26,8 @@ lifting for a python project so that people can hit the ground running with thei
   - Example: `uv add pre-commit`
 
 ## Standard Commands
+- `make create-requirements`: Creates and/or updates the `requirements.txt` file.
 - `make env`: Creates or activates a `uv` virtual environment.
 - `make lint`: Runs `pre-commit`.
-- `make test`: Runs test cases in the `tests` directory.
 - `make run`: Runs the `main` function in the `project` folder.
+- `make test`: Runs test cases in the `tests` directory.
