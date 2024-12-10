@@ -11,3 +11,6 @@ dependencies = [
     "requests>=2.32.3",
     "responses>=0.25.3",
 ]
+
+[tool.uv.pip]
+verify-hashes = true
