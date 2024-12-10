@@ -25,7 +25,6 @@ jobs:
           HEAD_BRANCH=${{ github.event.pull_request.head.ref }}
           echo "Changed files: $BASE_BRANCH"
           echo "Changed files: $HEAD_BRANCH"
-          git diff --name-only origin/$BASE_BRANCH -- origin/$HEAD_BRANCH
           CHANGES=$(git diff --name-only origin/$BASE_BRANCH -- origin/$HEAD_BRANCH | grep -E "^pyproject.toml$"  && echo false | grep -E "^uv.lock$" && echo false || true)
           if [ "$CHANGES" == "true" ]; then
             echo "Changes were detected..."
@@ -34,6 +33,13 @@ jobs:
           else
             echo "Changes were NOT detected..."
             echo "uv_updated=false" >> $GITHUB_ENV
+          fi
+          
+          CHANGES=$(git diff --name-only origin/$BASE_BRANCH -- origin/$HEAD_BRANCH)
+          if echo "$CHANGES" | grep -q "^pyproject.toml$" && echo "$CHANGES" | grep -q "^uv.lock$"; then
+            echo "Both pyproject.toml and uv.lock have changed."
+          else
+            echo "One or both files have not changed."
           fi
 
       - name: Validate requirements.txt update
