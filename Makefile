@@ -8,7 +8,7 @@ env:
 
 .PHONY: lint
 lint:
-	uv pre-commit run --all-files
+	uv run pre-commit run --all-files
 
 .PHONY: create-requirements
 create-requirements:
