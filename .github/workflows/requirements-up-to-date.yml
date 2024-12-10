@@ -29,6 +29,7 @@ jobs:
             echo "uv_updated=true" >> $GITHUB_ENV
           else
             echo "uv_updated=false" >> $GITHUB_ENV
+          fi
 
       - name: Validate requirements.txt update
         if: env.uv_updated == 'true'
