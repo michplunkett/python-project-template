@@ -39,7 +39,7 @@ jobs:
           echo "Checking if requirements.txt has been updated..."
           BASE_BRANCH=${{ github.event.pull_request.base.ref }}
           HEAD_BRANCH=${{ github.event.pull_request.head.ref }}
-          REQUIREMENTS_CHANGED=$(git diff --name-only origin/$BASE_BRANCH -- origin/$HEAD_BRANCH | grep -q "requirements.txt" && echo true || echo false)
+          REQUIREMENTS_CHANGED=$(git diff --name-only origin/$BASE_BRANCH -- origin/$HEAD_BRANCH || grep -q "requirements.txt" && echo true || echo false)
           if [ "$REQUIREMENTS_CHANGED" == "true" ]; then
             echo "requirements.txt updated correctly."
           else
