@@ -22,6 +22,7 @@ jobs:
         run: |
           echo "Checking for changes in uv.lock or pyproject.toml..."
           CHANGES=$(git diff --name-only origin/main --)
+          
           if echo "$CHANGES" | grep -qE "^(uv.lock|pyproject.toml)$"; then
             echo "uv.lock or pyproject.toml has changed."
             echo "files_changed=true" >> $GITHUB_ENV
@@ -34,9 +35,10 @@ jobs:
         if: env.files_changed == 'true'
         run: |
           echo "Validating requirements.txt update..."
+          CHANGED_FILES=$(git diff --name-only origin/main --)
           
           # Check if requirements.txt has been updated
-          if echo git diff --name-only origin/main -- | grep -q "^requirements.txt$"; then
+          if echo "$CHANGED_FILES" | grep -q "^requirements.txt$"; then
             echo "requirements.txt has been updated."
           else
             echo "ERROR: pyproject.toml or uv.lock has changed, but requirements.txt has not been updated."
