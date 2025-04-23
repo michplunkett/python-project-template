@@ -18,6 +18,6 @@ your repository's standards.
 --->
 - [ ] The code runs successfully.
 
-```commandline
+```console
 HERE IS SOME COMMAND LINE OUTPUT
 ```

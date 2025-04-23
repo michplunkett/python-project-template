@@ -27,7 +27,7 @@ lifting for a python project so that people can hit the ground running with thei
 
 ## Standard Commands
 - `make create-requirements`: Creates and/or updates the `requirements.txt` file.
-- `make env`: Creates or activates a `uv` virtual environment.
+- `make env`: Creates a `uv` virtual environment.
 - `make lint`: Runs `pre-commit`.
 - `make run`: Runs the `main` function in the `project` folder.
 - `make test`: Runs test cases in the `tests` directory.
