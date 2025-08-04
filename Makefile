@@ -6,6 +6,10 @@
 env:
 	uv venv
 
+.PHONY: install
+install:
+	uv pip install -r pyproject.toml
+
 .PHONY: create-requirements
 create-requirements:
 	uv pip compile --generate-hashes pyproject.toml > requirements.txt
