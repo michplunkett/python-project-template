@@ -61,7 +61,7 @@ repos:
           - --line-length=80
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.11.6
+    rev: v0.12.7
     hooks:
       - id: ruff
         types_or: [python,pyi]
