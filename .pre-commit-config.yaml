@@ -32,9 +32,6 @@ repos:
       - id: check-symlinks
       - id: mixed-line-ending
       - id: sort-simple-yaml
-      - id: fix-encoding-pragma
-        args:
-          - --remove
       - id: pretty-format-json
         args:
           - --autofix
