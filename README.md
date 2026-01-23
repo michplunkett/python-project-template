@@ -43,6 +43,6 @@ draft: [PR Draft](https://github.blog/news-insights/product-news/introducing-dra
 ## Standard Commands
 - `make create-requirements`: Creates and/or updates the `requirements.txt` file.
 - `make env`: Creates a `uv` virtual environment.
-- `make lint`: Runs `pre-commit`.
+- `make format`: Runs `pre-commit`.
 - `make run`: Runs the `main` function in the `project` folder.
 - `make test`: Runs test cases in the `tests` directory.
