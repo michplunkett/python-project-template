@@ -1,0 +1,100 @@
+name: Check-PR-Title
+
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+
+jobs:
+  title-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enforce imperative subject (heuristic)
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = context.payload.pull_request.title;
+
+            // -----------------------------
+            // 1) Imperative heuristic
+            // -----------------------------
+            const bannedStarts = new Set([
+              "Added", "Adding", "Adds",
+              "Fixed", "Fixes", "Fixing",
+              "Updated", "Updating", "Updates",
+              "Changed", "Changing", "Changes",
+              "Removed", "Removing", "Removes",
+              "Refactored", "Refactoring",
+              "Improved", "Improving",
+              "Implemented", "Implementing", "Implements",
+              "Created", "Creating", "Creates",
+              "Renamed", "Renaming", "Renames",
+              "Moved", "Moving", "Moves",
+              "Deleted", "Deleting", "Deletes",
+              "Reverted", "Reverting", "Reverts",
+              "Bumped", "Bumping", "Bumps",
+              "Upgraded", "Upgrading", "Upgrades",
+              "Downgraded", "Downgrading", "Downgrades",
+              "Pinned", "Pinning", "Pins",
+              "Resolved", "Resolving", "Resolves",
+              "Corrected", "Correcting", "Corrects",
+              "Addressed", "Addressing", "Addresses",
+              "Patched", "Patching", "Patches",
+              "Cleaned", "Cleaning", "Cleans",
+              "Formatted", "Formatting", "Formats",
+              "Linted", "Linting", "Lints",
+              "Sorted", "Sorting", "Sorts",
+              "Documented", "Documenting", "Documents",
+              "Tested", "Testing", "Tests",
+              "Optimized", "Optimizing", "Optimizes",
+              "Enhanced", "Enhancing", "Enhances",
+              "Simplified", "Simplifying", "Simplifies",
+              "Adjusted", "Adjusting", "Adjusts",
+              "Modified", "Modifying", "Modifies",
+            ]);
+
+            const firstWord = title.split(/\s+/)[0];
+            if (bannedStarts.has(firstWord)) {
+              core.setFailed(
+                `PR title subject should be present imperative. ` +
+                `Avoid "${firstWord} …". Example: "Add …", "Fix …", "Update …".`
+              );
+            }
+
+            // -----------------------------
+            // 2) Allow leading emojis, but:
+            //    - Reject WIP prefixes
+            //    - Require first "real" word to start uppercase
+            // -----------------------------
+            const trimmed = title.trim();
+
+            // Reject WIP at the start (optionally wrapped in [] or () and optionally followed by ":" or "-")
+            if (/^\s*[\[(]?\s*wip\s*[\])]?(\s*[:\-–—])?/i.test(trimmed)) {
+              core.setFailed(`PR title must not be WIP.`);
+            }
+
+            // Find the first letter-starting word, allowing leading non-letters (e.g., emojis, punctuation)
+            const match = trimmed.match(/[A-Za-z][A-Za-z0-9'’]*/);
+
+            if (!match) {
+              core.setFailed(`PR title must contain a word.`);
+            } else {
+              const firstRealWord = match[0];
+              const firstChar = firstRealWord[0];
+
+              if (firstChar !== firstChar.toUpperCase()) {
+                const suggested =
+                  trimmed.replace(
+                    firstRealWord,
+                    firstChar.toUpperCase() + firstRealWord.slice(1)
+                  );
+
+                core.setFailed(
+                  `PR title must start with a capitalized word (emojis are fine). ` +
+                  `Example: "${suggested}"`
+                );
+              }
+            }
